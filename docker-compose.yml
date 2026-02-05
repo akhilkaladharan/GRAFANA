@@ -1,0 +1,45 @@
+version: "3.9"
+
+services:
+  prometheus:
+    image: prom/prometheus:v2.55.0
+    container_name: prometheus
+    volumes:
+      - ./prometheus.yml:/etc/prometheus/prometheus.yml:ro
+      - prometheus-data:/prometheus
+    command:
+      - "--config.file=/etc/prometheus/prometheus.yml"
+      - "--storage.tsdb.path=/prometheus"
+    ports:
+      - "9090:9090"
+    networks:
+      - delulu
+
+  grafana:
+    image: grafana/grafana:11.3.0
+    container_name: grafana
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./grafana.yaml:/etc/grafana/provisioning/datasources/datasource.yaml:ro
+      - grafana-data:/var/lib/grafana
+    networks:
+      - delulu
+
+  node_exporter:
+    image: quay.io/prometheus/node-exporter:v1.8.2
+    container_name: node-exporter
+    command:
+      - "--path.rootfs=/host"
+    volumes:
+      - "/:/host:ro,rslave"
+    networks:
+      - delulu
+
+volumes:
+  grafana-data:
+  prometheus-data:
+
+networks:
+  delulu:
+    driver: bridge
