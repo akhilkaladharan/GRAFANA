@@ -1,7 +1,7 @@
-#Grafana
+# Grafana
 
-##prometheus
+## prometheus
 
-- install(#install)
+- [install](#install)
 
-###node
+### node
