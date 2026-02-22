@@ -4,4 +4,7 @@
 
 - [installation](#installation)
 
-### node
+### nod
+
+```text
+docker ps
