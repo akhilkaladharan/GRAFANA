@@ -2,6 +2,6 @@
 
 ## prometheus
 
-- [install](#install)
+- [installation](#installation)
 
 ### node
