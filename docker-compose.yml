@@ -21,7 +21,7 @@ services:
     ports:
       - "3000:3000"
     volumes:
-      - ./grafana.yaml:/etc/grafana/provisioning/datasources/datasource.yaml:ro
+      - ./grafana.yml:/etc/grafana/provisioning/datasources/datasource.yaml:ro
       - grafana-data:/var/lib/grafana
     networks:
       - delulu
